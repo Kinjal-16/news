@@ -6,7 +6,7 @@ import pandas as pd
 import requests
 from newspaper import Article
 
-conn = "mongodb://localhost:27017"
+conn = "mongodb+srv://Kinjal:<password>@cluster0.cskrz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 client = pymongo.MongoClient(conn)
 general=[]
 Entertainment=[]
