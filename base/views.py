@@ -5,8 +5,9 @@ import pymongo  # for mongodb access
 import pandas as pd
 import requests
 from newspaper import Article
+import os
+conn = os.getenv( "MONGODB_URI")
 
-conn = "mongodb+srv://Kinjal:<password>@cluster0.cskrz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 client = pymongo.MongoClient(conn)
 general=[]
 Entertainment=[]
@@ -20,7 +21,7 @@ urlS=''
 def putData():
     
 # Establish connection
-    conn = "mongodb://localhost:27017"
+    conn = os.getenv( "MONGODB_URI")
     client = pymongo.MongoClient(conn)
 
 # Import the csv files
@@ -76,7 +77,7 @@ def getData():
             }
             articles = articles + [dict]
 
-        conn = "mongodb://localhost:27017"
+        conn = os.getenv( "MONGODB_URI")
         client = pymongo.MongoClient(conn)
 
         if len(articles) > 0:
@@ -84,7 +85,7 @@ def getData():
             df = df.loc[:, ["title", "urlToImage","url"]]
             df.to_csv(list + '.csv')
 def delData():
-    conn = "mongodb://localhost:27017"
+    conn = os.getenv( "MONGODB_URI")
     client = pymongo.MongoClient(conn)
 
 # Create a database
@@ -98,7 +99,7 @@ def delData():
     db.sports.delete_many({})
     db.technology.delete_many({})
 def extractData():
-    conn = "mongodb://localhost:27017"
+    conn = os.getenv( "MONGODB_URI")
     client = pymongo.MongoClient(conn)
     db = client.Headlines
 
